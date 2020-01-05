@@ -1,6 +1,7 @@
 #!/usr/bin/env groovy
 def appName= 'testing'
 def major_version = 1.0
+def Filename= appName + _ + 'major_version' + . + Build_number
 node{ 
   stage('cloning repo'){
   checkout scm
@@ -8,6 +9,18 @@ node{
   stage('Testing')
 {
 sh 'ls -la'
-echo "Building application ${appName} with version ${major_version}"
+echo "Building test ${appName} with version ${major_version}"
+sh 'mvn clean test'  
 }
+  stage('Building')
+  {
+    sh 'ls -lart'
+    echo "Building the application ${appName} with version ${major_version}"
+    sh 'mvn clean install'
+  }
+  stage('App rename')
+  {
+    echo "Renaming the application jar file name"
+    sh 'mv $WORKSPACE/target/jb*.jar $WORKSPACE/target/${Filename}.jar'
+  }
 }
