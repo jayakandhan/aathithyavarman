@@ -10,13 +10,11 @@ node{
   stage('Testing')
 {
 sh 'ls -la'
-echo "Building test ${appName} with version ${major_version}"
 sh 'mvn clean test'  
 }
   stage('Building')
   {
     sh 'ls -lart'
-    echo "Building the application ${appName} with version ${major_version}"
     sh 'mvn clean install'
   }
   stage('App rename')
