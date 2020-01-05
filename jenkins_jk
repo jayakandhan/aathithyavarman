@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 def appName= 'testing'
 def major_version = 1.0
-def Filename= ${appName} + _ + ${major_version} + . + Build_number
+def Filename1= ${appName} + _ + ${major_version} + . + Build_number
 node{ 
   stage('cloning repo'){
   checkout scm
@@ -21,6 +21,6 @@ sh 'mvn clean test'
   stage('App rename')
   {
     echo "Renaming the application jar file name"
-    sh 'mv $WORKSPACE/target/jb*.jar $WORKSPACE/target/${Filename}.jar'
+    sh 'mv $WORKSPACE/target/jb*.jar $WORKSPACE/target/${Filename1}.jar'
   }
 }
