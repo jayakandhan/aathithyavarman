@@ -2,7 +2,7 @@
 def appName= 'testing'
 def major_version = 1.0
 def buildnumber=BUILD_NUMBER
-def file_name=${appName} +  ${major_version} +  ${buildnumber}
+def file_name=appName +  major_version +  buildnumber
 
 node{ 
   stage('cloning repo'){
