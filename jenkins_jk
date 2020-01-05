@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 def appName= 'testing'
 def major_version = 1.0
-def Filename1= ${appName} + _ + ${major_version} + . + Build_number
+def Filename1= ${appName} + _ + ${major_version} + . + BUILD_NUMBER
 node{ 
   stage('cloning repo'){
   checkout scm
